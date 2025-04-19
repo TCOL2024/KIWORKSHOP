@@ -1,2 +1,2 @@
 # KIWORKSHOP
-Workshop KU
+Workshop Ki
