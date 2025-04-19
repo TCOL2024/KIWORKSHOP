@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Gepäckinformationen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Gepäckinformationen</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Gepäckarten</h2>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Freigepäck</button>
+        <div class="accordion-content">
+          <p>
+            Informieren Sie sich über die gültigen Freigepäckregeln von Lufthansa. Die Freigepäckmenge richtet sich nach der gebuchten Reiseklasse bzw. dem gebuchten Tarif.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/freigepaeck-regeln" target="_blank">Zum Freigepäck</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Handgepäck</button>
+        <div class="accordion-content">
+          <p>
+            Ob Anzahl, Gewicht oder Sicherheitskontrolle Ihres Handgepäcks – hier informiert Sie Lufthansa über alles Wissenswerte rund um dieses Thema.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/handgepaeck" target="_blank">Zum Handgepäck</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Übergepäck</button>
+        <div class="accordion-content">
+          <p>
+            Bei Übergepäck gibt es einiges zu beachten. Alles rund um dieses Thema sowie zu den Pauschalpreisen finden Sie hier.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/uebergepaeck" target="_blank">Zum Übergepäck</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Sport- und Sondergepäck</button>
+        <div class="accordion-content">
+          <p>
+            Egal ob Snowboard, Surfen oder Golf – alle Infos zur Anmeldung und zu den verschiedenen Transportmöglichkeiten rund um Sport- und Sondergepäck finden Sie hier.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/sportgepaeck" target="_blank">Zum Sport- und Sondergepäck</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Gepäckservices</h2>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Remote Bag Drop</button>
+        <div class="accordion-content">
+          <p>
+            Mit dem Remote Bag Drop-Service können Sie Ihr Gepäck bis zu 23 Stunden vor Abflug von einem Ort Ihrer Wahl abholen lassen. Der Service ist im Großraum Frankfurt verfügbar und ab 25 Euro buchbar.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/prepare-for-your-trip/baggage" target="_blank">Service buchen</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Gepäckabgabe</button>
+        <div class="accordion-content">
+          <p>
+            Wenn Sie Ihre Bordkarte bereits in der Lufthansa App, per Online-Check-in oder an einem Check-in-Kiosk ausgestellt haben, können Sie Ihr Gepäck an vielen Flughäfen bequem an Gepäckautomaten selbst abgeben.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/gepaeckabgabe" target="_blank">Weitere Informationen zur Gepäckabgabe</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Probleme mit dem Gepäck</button>
+        <div class="accordion-content">
+          <p>
+            Erfahren Sie hier, wo Sie einen Schaden reklamieren und sich über verspätete Gepäckstücke informieren können.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/gepaeckunregelmaessigkeiten" target="_blank">Hilfe bei Problemen mit dem Gepäck</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const accButtons = document.querySelectorAll(".accordion-button");
+
+    accButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        button.classList.toggle("active");
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+</html>
