@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>FAQ: Deine häufigsten Fragen</h1>
+  </header>
+
+  <main>
+    <section class="accordion">
+      <div class="accordion-item">
+        <button class="accordion-button">Wie funktioniert die Anmeldung?</button>
+        <div class="accordion-content">
+          <p>Nach Eingabe des Passworts wirst Du zur Startseite weitergeleitet.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-button">Kann ich die Seite teilen?</button>
+        <div class="accordion-content">
+          <p>Die Inhalte sind nur mit dem richtigen Passwort zugänglich.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const accButtons = document.querySelectorAll(".accordion-button");
+
+    accButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        button.classList.toggle("active");
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+</html>
