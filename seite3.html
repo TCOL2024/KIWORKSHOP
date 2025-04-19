@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Ihr Anliegen: Reise verschieben und Flüge umbuchen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Ihr Anliegen: Reise verschieben und Flüge umbuchen</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Empfohlene Services zu Ihrem Anliegen</h2>
+      <div class="accordion-item">
+        <button class="accordion-button">Flug umbuchen</button>
+        <div class="accordion-content">
+          <p>
+            Erhalten Sie nach dem Login in Ihrem Profil eine Übersicht aller Buchungen und bearbeiten Sie diese schnell und unkompliziert.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/meine-buchungen" target="_blank">Flug umbuchen</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Sie möchten uns kontaktieren?</h2>
+      <div class="accordion-item">
+        <button class="accordion-button">Kontaktmöglichkeiten</button>
+        <div class="accordion-content">
+          <p>
+            Hier finden Sie den passenden Kontaktweg für jedes Anliegen.
+          </p>
+          <p>
+            <a href="https://www.lufthansa.com/de/de/hilfe-und-kontakt" target="_blank">Zum Hilfe-Bereich</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const accButtons = document.querySelectorAll(".accordion-button");
+
+    accButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const content = button.nextElementSibling;
+        button.classList.toggle("active");
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+</html>
