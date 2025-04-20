@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bildungsportal FAQ</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEVO FAQ Portal</title>
   <style>
     :root {
       --primary-color: #00539f;
+      --accent-color: #ffb400;
+      --grey-100: #f4f6f8;
       --space-unit: 8px;
-      --radius-sm: 4px;
     }
 
-    /* global reset + box‑model */
     * {
       margin: 0;
-      padding: 0;
       box-sizing: border-box;
     }
 
@@ -24,97 +22,138 @@
       line-height: 1.6;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 calc(var(--space-unit) * 2);
-    }
-
-    header {
+    .header {
       background: var(--primary-color);
-      color: #fff;
+      color: white;
+      padding: 2rem;
       text-align: center;
-      padding: calc(var(--space-unit) * 4);
     }
 
-    .form-section {
-      margin: calc(var(--space-unit) * 4) 0;
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    details {
+      background: var(--grey-100);
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    summary {
+      font-weight: bold;
+      cursor: pointer;
     }
 
     form {
-      background: #f8f9fa;
-      border-radius: var(--radius-sm);
-      padding: calc(var(--space-unit) * 4);
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
     }
 
     label {
-      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
     }
 
-    input,
-    textarea,
-    select {
+    input, select, textarea {
       width: 100%;
-      padding: calc(var(--space-unit) * 1);
-      border: none;
-      border-bottom: 2px solid #aaa;
-      background: transparent;
-      font: inherit;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus,
-    button:focus {
-      outline: 2px solid var(--primary-color);
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
     }
 
     button {
       background: var(--primary-color);
-      color: #fff;
-      padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 2);
+      color: white;
+      padding: 0.8rem 1.5rem;
       border: none;
-      border-radius: var(--radius-sm);
+      border-radius: 4px;
       cursor: pointer;
     }
 
     footer {
-      background: #e9ecef;
       text-align: center;
-      padding: calc(var(--space-unit) * 4) 0;
-      margin-top: calc(var(--space-unit) * 4);
+      padding: 2rem;
+      margin-top: 3rem;
+      background: var(--grey-100);
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Bildungsportal FAQ</h1>
+  <header class="header">
+    <h1>AEVO FAQ – Häufige Fragen</h1>
   </header>
 
   <main class="container">
-    <section class="form-section">
+    <!-- FAQ-Bereich -->
+    <section>
+      <h2>FAQ-Liste</h2>
+
+      <details>
+        <summary>Was ist das Ziel der Berufsausbildung?</summary>
+        <p>Nach § 1 Abs. 3 BBiG soll die Ausbildung die berufliche Handlungsfähigkeit vermitteln.</p>
+      </details>
+
+      <details>
+        <summary>Welche Rechtsquelle ist maßgeblich?</summary>
+        <p>Das Berufsbildungsgesetz (BBiG) regelt bundesweit Rechte und Pflichten.</p>
+      </details>
+
+      <details>
+        <summary>Wie lange darf die Probezeit dauern?</summary>
+        <p>Die Probezeit muss zwischen 1 und 4 Monaten liegen (§ 20 BBiG).</p>
+      </details>
+
+      <!-- Weitere 7 FAQ-Einträge hier einfügen -->
+
+    </section>
+
+    <!-- Frageformular -->
+    <section>
+      <h2>Eigene Frage stellen</h2>
       <details open>
-        <summary><strong>Frage stellen</strong></summary>
-
-        <!-- mailto‑Variante -->
-        <form
-          action="mailto:noormann@gmx.com"
-          method="post"
-          enctype="text/plain"
-          onsubmit="alert('Vielen Dank! Ihr E‑Mail‑Programm öffnet sich jetzt – bitte Nachricht absenden.');"
-        >
-          <div style="margin-bottom: 1rem">
-            <label for="email">E‑Mail:</label>
-            <input type="email" id="email" name="E-Mail" required />
+        <summary>Formular öffnen</summary>
+        <form id="frageFormular">
+          <div class="form-group">
+            <label for="themenbereich">Themenbereich</label>
+            <select id="themenbereich" required>
+              <option value="">Bitte wählen</option>
+              <option>Ausbildungsplanung</option>
+              <option>Rechtliche Grundlagen</option>
+              <option>Prüfungsvorbereitung</option>
+            </select>
           </div>
 
-          <div style="margin-bottom: 1rem">
-            <label for="frage">Ihre Frage:</label>
-            <textarea id="frage" name="Frage" rows="4" required></textarea>
+          <div class="form-group">
+            <label for="vorname">Vorname</label>
+            <input type="text" id="vorname" required>
           </div>
 
-          <div style="display: flex; gap: 1rem">
+          <div class="form-group">
+            <label for="nachname">Nachname</label>
+            <input type="text" id="nachname" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-Mail</label>
+            <input type="email" id="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="frage">Ihre Frage</label>
+            <textarea id="frage" rows="5" required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem;">
             <button type="submit">Absenden</button>
             <button type="reset">Abbrechen</button>
           </div>
@@ -124,13 +163,19 @@
   </main>
 
   <footer>
-    <div class="container">
-      <p>&copy; 2024 Bildungsportal</p>
-      <p style="margin-top: 1rem">
-        <a href="#impressum">Impressum</a> |
-        <a href="#datenschutz">Datenschutz</a>
-      </p>
-    </div>
+    <p>&copy; 2024 AEVO FAQ Portal</p>
+    <p>
+      <a href="#impressum">Impressum</a> | 
+      <a href="#datenschutz">Datenschutz</a>
+    </p>
   </footer>
+
+  <script>
+    document.getElementById('frageFormular').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Vielen Dank! Ihre Frage wurde erfolgreich übermittelt.');
+      this.reset();
+    });
+  </script>
 </body>
 </html>
