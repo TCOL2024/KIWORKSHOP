@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bildungsportal FAQ</title>
+
+  <style>
+    :root {
+      --primary-color: #00539f;
+      --space-unit: 8px;
+      --radius-sm: 4px;
+    }
+
+    /* global reset + box‑model */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 calc(var(--space-unit) * 2);
+    }
+
+    header {
+      background: var(--primary-color);
+      color: #fff;
+      text-align: center;
+      padding: calc(var(--space-unit) * 4);
+    }
+
+    .form-section {
+      margin: calc(var(--space-unit) * 4) 0;
+    }
+
+    form {
+      background: #f8f9fa;
+      border-radius: var(--radius-sm);
+      padding: calc(var(--space-unit) * 4);
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: calc(var(--space-unit) * 1);
+      border: none;
+      border-bottom: 2px solid #aaa;
+      background: transparent;
+      font: inherit;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus,
+    button:focus {
+      outline: 2px solid var(--primary-color);
+    }
+
+    button {
+      background: var(--primary-color);
+      color: #fff;
+      padding: calc(var(--space-unit) * 1) calc(var(--space-unit) * 2);
+      border: none;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+    }
+
+    footer {
+      background: #e9ecef;
+      text-align: center;
+      padding: calc(var(--space-unit) * 4) 0;
+      margin-top: calc(var(--space-unit) * 4);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Bildungsportal FAQ</h1>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <details open>
+        <summary><strong>Frage stellen</strong></summary>
+
+        <!-- mailto‑Variante -->
+        <form
+          action="mailto:noormann@gmx.com"
+          method="post"
+          enctype="text/plain"
+          onsubmit="alert('Vielen Dank! Ihr E‑Mail‑Programm öffnet sich jetzt – bitte Nachricht absenden.');"
+        >
+          <div style="margin-bottom: 1rem">
+            <label for="email">E‑Mail:</label>
+            <input type="email" id="email" name="E-Mail" required />
+          </div>
+
+          <div style="margin-bottom: 1rem">
+            <label for="frage">Ihre Frage:</label>
+            <textarea id="frage" name="Frage" rows="4" required></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem">
+            <button type="submit">Absenden</button>
+            <button type="reset">Abbrechen</button>
+          </div>
+        </form>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Bildungsportal</p>
+      <p style="margin-top: 1rem">
+        <a href="#impressum">Impressum</a> |
+        <a href="#datenschutz">Datenschutz</a>
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
