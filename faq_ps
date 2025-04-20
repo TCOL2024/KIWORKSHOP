@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ – Psychologische Sicherheit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #ffffff;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      text-align: center;
+      padding: 1.5em 1em;
+    }
+    main {
+      max-width: 960px;
+      margin: auto;
+      padding: 2em 1em;
+    }
+    section {
+      margin-bottom: 3em;
+    }
+    h2 {
+      font-size: 22px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 0.3em;
+    }
+    details {
+      margin: 1em 0;
+      padding: 1em;
+      background: #f4f4f4;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    p {
+      margin-top: 0.5em;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    footer {
+      text-align: center;
+      padding: 2em;
+      font-size: 13px;
+      color: #666;
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>FAQ – Psychologische Sicherheit</h1>
+</header>
+<main>
+
+  <section id="grundlagen">
+    <h2>Grundlagen</h2>
+    <details><summary>Was bedeutet psychologische Sicherheit?</summary><p>Psychologische Sicherheit ist das Gefühl, sich in einem Team äußern zu können, ohne Angst vor negativen Konsequenzen.</p></details>
+    <details><summary>Woher stammt der Begriff?</summary><p>Er wurde von Amy Edmondson in den 1990er Jahren wissenschaftlich geprägt.</p></details>
+    <details><summary>Was ist der Unterschied zwischen Vertrauen und psychologischer Sicherheit?</summary><p>Vertrauen ist persönlich, PS betrifft das Verhalten in Gruppen.</p></details>
+    <details><summary>Ist psychologische Sicherheit messbar?</summary><p>Ja, z. B. durch Beobachtungen, anonyme Umfragen und gezielte Fragen.</p></details>
+    <details><summary>Gibt es psychologische Sicherheit in jedem Team?</summary><p>Nein – sie muss aktiv gefördert und gepflegt werden.</p></details>
+  </section>
+
+  <section id="erkennen">
+    <h2>Erkennen & Symptome</h2>
+    <details><summary>Wie erkenne ich psychologische Sicherheit?</summary><p>Durch Offenheit, Beteiligung, Fragen, Feedbackkultur und Fehlertoleranz.</p></details>
+    <details><summary>Was sind Anzeichen für fehlende PS?</summary><p>Schweigen, Vermeidung, Vertuschung, hohe Fluktuation.</p></details>
+    <details><summary>Wie wirkt sich PS auf die Kommunikation aus?</summary><p>Sie verbessert den Austausch, verringert Missverständnisse und fördert Klarheit.</p></details>
+    <details><summary>Wie reagieren Teams ohne PS auf Fehler?</summary><p>Oft mit Schuldzuweisungen oder Verschweigen.</p></details>
+    <details><summary>Wie beeinflusst PS das Engagement?</summary><p>Teams mit PS zeigen mehr Initiative und Verantwortung.</p></details>
+  </section>
+
+  <section id="fuehrung">
+    <h2>Führung & Verantwortung</h2>
+    <details><summary>Welche Rolle spielt Führung?</summary><p>Führungskräfte prägen PS maßgeblich durch Vorbild, Kommunikation und Haltung.</p></details>
+    <details><summary>Was ist eine psychologisch sichere Führungskraft?</summary><p>Eine Person, die aktiv zuhört, Feedback ermöglicht und Ängste abbaut.</p></details>
+    <details><summary>Wie kann ich als Führungskraft beginnen?</summary><p>Starte mit Check-ins, aktiven Fragen und Vorleben von Fehlertoleranz.</p></details>
+    <details><summary>Was passiert bei mangelnder PS in der Führung?</summary><p>Teams ziehen sich zurück, bleiben unter ihren Möglichkeiten.</p></details>
+    <details><summary>Kann PS auch ohne formale Führung entstehen?</summary><p>Ja – durch Teamnormen, Vertrauen und gemeinsame Verantwortung.</p></details>
+  </section>
+
+  <section id="praxis">
+    <h2>Teamkultur & Praxis</h2>
+    <details><summary>Wie kann ein Team PS fördern?</summary><p>Durch Working Agreements, Feedbackformate, offene Kommunikation.</p></details>
+    <details><summary>Was sind Liberating Structures?</summary><p>Moderationsmethoden, die Beteiligung und Sicherheit fördern.</p></details>
+    <details><summary>Wie oft sollte man PS reflektieren?</summary><p>Regelmäßig – z. B. monatlich oder nach jedem Projektabschnitt.</p></details>
+    <details><summary>Was ist ein Team-Thermometer?</summary><p>Ein Tool zur Einschätzung der Teamstimmung – hilfreich für PS.</p></details>
+    <details><summary>Wie unterstützt Feedback PS?</summary><p>Konstruktives Feedback stärkt Vertrauen und Offenheit.</p></details>
+  </section>
+
+</main>
+<footer>
+  &copy; 2025 – GitHub-kompatible FAQ zur psychologischen Sicherheit
+</footer>
+</body>
+</html>
