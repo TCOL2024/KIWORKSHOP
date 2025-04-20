@@ -3,61 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AEVO FAQ Portal - Antworten auf häufig gestellte Fragen zur Berufsausbildung.">
   <title>AEVO FAQ Portal</title>
   <style>
+    /* Designfarben und Variablen */
     :root {
       --primary-color: #00539f;
       --accent-color: #ffb400;
-      --grey-100: #f4f6f8;
-      --grey-800: #2d3748;
+      --background-color: #f9fafb;
+      --text-color: #333;
+      --light-grey: #e0e0e0;
+      --dark-grey: #555;
       --space-unit: 8px;
-      --radius-sm: 4px;
-      --radius-lg: 8px;
+      --border-radius: 6px;
+      --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
     }
 
     * {
       margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      font-family: system-ui, sans-serif;
+      font-family: Arial, sans-serif;
       line-height: 1.6;
-      color: var(--grey-800);
+      background: var(--background-color);
+      color: var(--text-color);
     }
 
-    .header {
+    header {
       background: var(--primary-color);
-      color: white;
+      color: #fff;
       padding: 2rem;
       text-align: center;
     }
 
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
     .container {
-      max-width: 960px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 1rem;
     }
 
+    section {
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      font-size: 1.5rem;
+      border-bottom: 2px solid var(--accent-color);
+      display: inline-block;
+      padding-bottom: 0.3rem;
+    }
+
     details {
-      background: var(--grey-100);
+      background: #fff;
       margin: 1rem 0;
-      padding: 1rem;
-      border-radius: var(--radius-sm);
-      border: 1px solid #ddd;
+      border: 1px solid var(--light-grey);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    details[open] summary {
+      background: var(--accent-color);
+      color: #fff;
     }
 
     summary {
-      font-weight: 600;
+      padding: 1rem;
+      font-weight: bold;
       cursor: pointer;
-      padding: 0.5rem;
+      transition: var(--transition);
+    }
+
+    summary:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    details p {
+      padding: 1rem;
+      border-top: 1px solid var(--light-grey);
+      font-size: 0.95rem;
     }
 
     form {
-      background: white;
+      background: #fff;
       padding: 2rem;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
     }
 
     .form-group {
@@ -67,180 +116,118 @@
     label {
       display: block;
       margin-bottom: 0.5rem;
-      font-weight: 500;
+      font-weight: bold;
     }
 
-    input, select, textarea {
+    input, select, textarea, button {
       width: 100%;
       padding: 0.8rem;
-      border: 1px solid #ddd;
-      border-radius: var(--radius-sm);
       font-size: 1rem;
+      border: 1px solid var(--light-grey);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary-color);
+      outline: none;
     }
 
     button {
       background: var(--primary-color);
-      color: white;
-      padding: 0.8rem 1.5rem;
+      color: #fff;
       border: none;
-      border-radius: var(--radius-sm);
       cursor: pointer;
-      transition: opacity 0.2s;
+      margin-top: 1rem;
+      transition: var(--transition);
     }
 
     button:hover {
-      opacity: 0.9;
+      background: var(--accent-color);
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      margin-top: 3rem;
-      background: var(--grey-100);
-      color: #666;
+      background: var(--dark-grey);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
-      .container {
-        padding: 0.5rem;
+      header h1 {
+        font-size: 1.5rem;
       }
-      
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
       form {
-        padding: 1rem;
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
-  <header class="header">
-    <h1>AEVO FAQ – Häufige Fragen</h1>
+  <header>
+    <h1>AEVO FAQ Portal</h1>
+    <p>Ihre zentrale Anlaufstelle für Fragen zur Berufsausbildung.</p>
   </header>
 
   <main class="container">
-    <!-- FAQ-Bereich -->
-    <section aria-labelledby="faq-heading">
-      <h2 id="faq-heading">Häufig gestellte Fragen</h2>
-
+    <section>
+      <h2>Häufig gestellte Fragen</h2>
+      <!-- FAQ-Bereich -->
       <details>
         <summary>Was ist das Ziel der Berufsausbildung?</summary>
         <p>Nach § 1 Abs. 3 BBiG soll die Ausbildung die berufliche Handlungsfähigkeit vermitteln.</p>
       </details>
-
       <details>
         <summary>Welche Rechtsquelle ist maßgeblich für Ausbilder und Azubi?</summary>
         <p>Das Berufsbildungsgesetz (BBiG) regelt bundesweit Rechte und Pflichten.</p>
       </details>
-
-      <details>
-        <summary>Wie lange darf die Probezeit maximal dauern?</summary>
-        <p>Die Probezeit muss mindestens 1 und darf höchstens 4 Monate betragen (§ 20 BBiG).</p>
-      </details>
-
-      <details>
-        <summary>Wer meldet den Auszubildenden zur Abschlussprüfung an?</summary>
-        <p>Der Ausbildende meldet fristgerecht bei der zuständigen Stelle an (§ 43 Abs. 1 BBiG).</p>
-      </details>
-
-      <details>
-        <summary>Wann muss der Betrieb zur Berufsschule freistellen?</summary>
-        <p>An kompletten Berufsschultagen sowie für Blockunterricht (§ 15 BBiG).</p>
-      </details>
-
-      <details>
-        <summary>Was sind Ausbildungsmittel?</summary>
-        <p>Alle Werkzeuge und Materialien, die für das Ausbildungsziel erforderlich sind (§ 14 BBiG).</p>
-      </details>
-
-      <details>
-        <summary>Wann endet das Ausbildungsverhältnis automatisch?</summary>
-        <p>Mit Bekanntgabe des Prüfungsergebnisses bei bestandener Abschlussprüfung (§ 21 BBiG).</p>
-      </details>
-
-      <details>
-        <summary>Welche Kündigungsmöglichkeiten bestehen nach der Probezeit?</summary>
-        <p>Nur aus wichtigem Grund fristlos oder vom Azubi mit 4-Wochen-Frist (§ 22 BBiG).</p>
-      </details>
-
-      <details>
-        <summary>Was ist eine Teilzeitausbildung?</summary>
-        <p>Die Ausbildungszeit kann nach § 7a BBiG reduziert werden, die Gesamtdauer verlängert sich.</p>
-      </details>
-
-      <details>
-        <summary>Welche Rolle spielt der DQR?</summary>
-        <p>Der Deutsche Qualifikationsrahmen ermöglicht europaweite Vergleichbarkeit von Abschlüssen.</p>
-      </details>
+      <!-- Weitere Fragen -->
     </section>
 
-    <!-- Frageformular -->
-    <section aria-labelledby="form-heading">
-      <h2 id="form-heading">Eigene Frage einreichen</h2>
-      <details open>
-        <summary>Formular öffnen</summary>
-        <form id="frageFormular">
-          <div class="form-group">
-            <label for="themenbereich">Themenbereich</label>
-            <select id="themenbereich" required>
-              <option value="">Bitte auswählen</option>
-              <option>Ausbildungsvoraussetzungen & Planung</option>
-              <option>Vorbereitung & Einstellung</option>
-              <option>Durchführung der Ausbildung</option>
-              <option>Abschluss & rechtliche Grundlagen</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="kurs">Kurs</label>
-            <select id="kurs" required>
-              <option value="">Bitte auswählen</option>
-              <option>Wirtschaftsfachwirt</option>
-              <option>Handelsfachwirt</option>
-              <option>Bilanzbuchhalter</option>
-              <option>Sonstige</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="vorname">Vorname</label>
-            <input type="text" id="vorname" required>
-          </div>
-
-          <div class="form-group">
-            <label for="nachname">Nachname</label>
-            <input type="text" id="nachname" required>
-          </div>
-
-          <div class="form-group">
-            <label for="email">E-Mail</label>
-            <input type="email" id="email" required>
-          </div>
-
-          <div class="form-group">
-            <label for="frage">Ihre Frage</label>
-            <textarea id="frage" rows="5" required></textarea>
-          </div>
-
-          <div style="display: flex; gap: 1rem; margin-top: 2rem;">
-            <button type="submit">Absenden</button>
-            <button type="reset">Abbrechen</button>
-          </div>
-        </form>
-      </details>
+    <section>
+      <h2>Eigene Frage einreichen</h2>
+      <form id="frageFormular">
+        <div class="form-group">
+          <label for="themenbereich">Themenbereich</label>
+          <select id="themenbereich" required>
+            <option value="" disabled selected>Bitte auswählen</option>
+            <option>Ausbildungsvoraussetzungen & Planung</option>
+            <option>Vorbereitung & Einstellung</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="frage">Ihre Frage</label>
+          <textarea id="frage" rows="5" required></textarea>
+        </div>
+        <button type="submit">Absenden</button>
+      </form>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2024 AEVO FAQ Portal</p>
-    <p style="margin-top: 1rem;">
-      <a href="#impressum">Impressum</a> | 
-      <a href="#datenschutz">Datenschutz</a>
-    </p>
+    <p>&copy; 2025 AEVO FAQ Portal - Alle Rechte vorbehalten.</p>
+    <a href="#impressum">Impressum</a> | <a href="#datenschutz">Datenschutz</a>
   </footer>
-
   <script>
     document.getElementById('frageFormular').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Vielen Dank! Ihre Frage wurde erfolgreich übermittelt.');
+      alert('Vielen Dank! Ihre Frage wurde übermittelt.');
       this.reset();
     });
   </script>
