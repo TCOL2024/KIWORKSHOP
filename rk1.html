@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reisekostenabrechnung</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+    }
+
+    form {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #004080;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #d9e2ec;
+      padding-bottom: 5px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccd4db;
+      border-radius: 6px;
+      font-size: 14px;
+      background-color: #fdfdfd;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #e0e6ed;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f4f8;
+    }
+
+    .button-row {
+      text-align: right;
+      margin-top: 15px;
+    }
+
+    button {
+      background-color: #0070d2;
+      color: white;
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005aab;
+    }
+
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <h1>Reisekostenabrechnung</h1>
+  <form onsubmit="return false;">
+    <div class="section">
+      <div class="section-title">1. Persönliche Angaben</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" />
+        </div>
+        <div class="form-group">
+          <label for="personalnummer">Personalnummer</label>
+          <input type="text" id="personalnummer" />
+        </div>
+        <div class="form-group">
+          <label for="abteilung">Abteilung</label>
+          <input type="text" id="abteilung" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">2. Reisedetails</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="zweck">Reisezweck</label>
+          <input type="text" id="zweck" />
+        </div>
+        <div class="form-group">
+          <label for="ziel">Reiseziel(e)</label>
+          <input type="text" id="ziel" />
+        </div>
+        <div class="form-group">
+          <label for="beginn">Beginn</label>
+          <input type="date" id="beginn" />
+        </div>
+        <div class="form-group">
+          <label for="ende">Ende</label>
+          <input type="date" id="ende" />
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">3. Auslagen</div>
+      <table id="expenses-table">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Auslageart</th>
+            <th>Betrag (€)</th>
+            <th>Bemerkung</th>
+            <th>Entfernen</th>
+          </tr>
+        </thead>
+        <tbody id="expenses-body">
+          <tr>
+            <td><input type="date" /></td>
+            <td><input type="text" /></td>
+            <td><input type="number" step="0.01" class="amount" oninput="calculateTotal()" /></td>
+            <td><input type="text" /></td>
+            <td><button onclick="removeRow(this)">✕</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="button-row">
+        <button onclick="addRow()">+ Zeile hinzufügen</button>
+      </div>
+      <div class="total">Gesamtsumme: <span id="total">0.00</span> €</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">4. Bankverbindung</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="iban">IBAN</label>
+          <input type="text" id="iban" />
+        </div>
+        <div class="form-group">
+          <label for="bic">BIC</label>
+          <input type="text" id="bic" />
+        </div>
+        <div class="form-group">
+          <label for="bank">Kreditinstitut</label>
+          <input type="text" id="bank" />
+        </div>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button type="submit">Absenden</button>
+    </div>
+  </form>
+
+  <script>
+    function addRow() {
+      const tbody = document.getElementById("expenses-body");
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td><input type="date" /></td>
+        <td><input type="text" /></td>
+        <td><input type="number" step="0.01" class="amount" oninput="calculateTotal()" /></td>
+        <td><input type="text" /></td>
+        <td><button onclick="removeRow(this)">✕</button></td>
+      `;
+
+      tbody.appendChild(row);
+    }
+
+    function removeRow(button) {
+      const row = button.parentNode.parentNode;
+      row.remove();
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      const amounts = document.querySelectorAll(".amount");
+      let sum = 0;
+      amounts.forEach(input => {
+        const value = parseFloat(input.value);
+        if (!isNaN(value)) sum += value;
+      });
+      document.getElementById("total").textContent = sum.toFixed(2);
+    }
+  </script>
+</body>
+</html>
