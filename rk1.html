@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reisekostenabrechnung</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reisekostenformular 2025</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f5f7fa;
-      margin: 0;
+      background: #f2f4f8;
       padding: 40px;
-      color: #333;
+    }
+
+    form {
+      max-width: 1000px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     h1 {
       text-align: center;
       color: #004080;
-    }
-
-    form {
-      max-width: 1000px;
-      margin: 0 auto;
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
 
     .section {
@@ -34,17 +32,16 @@
     .section-title {
       font-size: 18px;
       font-weight: 600;
-      color: #004080;
       margin-bottom: 10px;
-      border-bottom: 2px solid #d9e2ec;
+      border-bottom: 2px solid #ddd;
+      color: #004080;
       padding-bottom: 5px;
     }
 
     .form-row {
       display: flex;
-      gap: 20px;
       flex-wrap: wrap;
-      margin-bottom: 15px;
+      gap: 20px;
     }
 
     .form-group {
@@ -53,18 +50,17 @@
     }
 
     label {
-      display: block;
       font-weight: 500;
+      display: block;
       margin-bottom: 5px;
     }
 
-    input, select, textarea {
+    input, select {
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccd4db;
+      padding: 8px;
+      border: 1px solid #ccc;
       border-radius: 6px;
       font-size: 14px;
-      background-color: #fdfdfd;
     }
 
     table {
@@ -74,8 +70,8 @@
     }
 
     th, td {
-      border: 1px solid #e0e6ed;
-      padding: 8px 12px;
+      border: 1px solid #ccc;
+      padding: 8px;
       text-align: left;
     }
 
@@ -83,209 +79,160 @@
       background-color: #f0f4f8;
     }
 
-    .button-row {
+    .total {
       text-align: right;
-      margin-top: 15px;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     button {
       background-color: #0070d2;
       color: white;
       padding: 10px 20px;
-      font-size: 14px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      font-size: 14px;
     }
 
     button:hover {
       background-color: #005aab;
     }
 
-    .total {
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: right;
-    }
   </style>
 </head>
 <body>
-  <h1>Reisekostenabrechnung</h1>
   <form onsubmit="return false;">
-    <!-- Persönliche Angaben -->
+    <h1>Reisekostenabrechnung 2025</h1>
+
+    <!-- Persönliche Daten -->
     <div class="section">
-      <div class="section-title">1. Persönliche Angaben</div>
+      <div class="section-title">1. Reisedaten</div>
       <div class="form-row">
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="vorname">Vorname</label>
+          <input type="text" id="vorname" />
+        </div>
+        <div class="form-group">
+          <label for="name">Nachname</label>
           <input type="text" id="name" />
         </div>
         <div class="form-group">
-          <label for="personalnummer">Personalnummer</label>
-          <input type="text" id="personalnummer" />
-        </div>
-        <div class="form-group">
-          <label for="abteilung">Abteilung</label>
-          <input type="text" id="abteilung" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Reisedetails -->
-    <div class="section">
-      <div class="section-title">2. Reisedetails</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="zweck">Reisezweck</label>
-          <select id="zweck">
-            <option>Dienstreise</option>
-            <option>Fortbildung</option>
-            <option>Projektbesuch</option>
-            <option>Audit</option>
-            <option>Sonstiges</option>
+          <label for="kostenstelle">Kostenstelle</label>
+          <select id="kostenstelle">
+            <option>26</option>
+            <option>0100</option>
+            <option>0510</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="ziel">Reiseziel(e)</label>
-          <input type="text" id="ziel" />
-        </div>
-        <div class="form-group">
-          <label for="beginn">Beginn</label>
-          <input type="date" id="beginn" />
-        </div>
-        <div class="form-group">
-          <label for="ende">Ende</label>
-          <input type="date" id="ende" />
+          <label for="reiseziel">Reiseziel</label>
+          <select id="reiseziel">
+            <option>Köln</option>
+            <option>Bonn</option>
+            <option>München</option>
+          </select>
         </div>
       </div>
-    </div>
-
-    <!-- Auslagen -->
-    <div class="section">
-      <div class="section-title">3. Auslagen</div>
-      <table id="expenses-table">
-        <thead>
-          <tr>
-            <th>Datum</th>
-            <th>Auslageart</th>
-            <th>Betrag (€)</th>
-            <th>Bemerkung</th>
-            <th>Entfernen</th>
-          </tr>
-        </thead>
-        <tbody id="expenses-body">
-          <tr>
-            <td><input type="date" /></td>
-            <td>
-              <select>
-                <option>Taxi</option>
-                <option>Hotel</option>
-                <option>Bahn</option>
-                <option>Flug</option>
-                <option>Parkgebühr</option>
-                <option>Sonstiges</option>
-              </select>
-            </td>
-            <td><input type="number" step="0.01" class="amount" oninput="calculateTotal()" /></td>
-            <td><input type="text" /></td>
-            <td><button onclick="removeRow(this)">✕</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="button-row">
-        <button onclick="addRow()">+ Zeile hinzufügen</button>
-      </div>
-      <div class="total">Gesamtsumme: <span id="total">0.00</span> €</div>
-    </div>
-
-    <!-- Verpflegungspauschale -->
-    <div class="section">
-      <div class="section-title">4. Verpflegungspauschale</div>
-      <table>
-        <thead>
-          <tr>
-            <th>Datum</th>
-            <th>Ort</th>
-            <th>Beginn (Uhrzeit)</th>
-            <th>Ende (Uhrzeit)</th>
-            <th>Pauschale (€)</th>
-            <th>Abzüge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="date" /></td>
-            <td><input type="text" /></td>
-            <td><input type="time" /></td>
-            <td><input type="time" /></td>
-            <td><input type="number" step="0.01" /></td>
-            <td><input type="text" /></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Bankverbindung -->
-    <div class="section">
-      <div class="section-title">5. Bankverbindung</div>
       <div class="form-row">
         <div class="form-group">
-          <label for="iban">IBAN</label>
-          <input type="text" id="iban" />
+          <label for="beginnDatum">Beginn (Datum)</label>
+          <input type="date" id="beginnDatum" />
         </div>
         <div class="form-group">
-          <label for="bic">BIC</label>
-          <input type="text" id="bic" />
+          <label for="beginnZeit">Beginn (Uhrzeit)</label>
+          <input type="time" id="beginnZeit" />
         </div>
         <div class="form-group">
-          <label for="bank">Kreditinstitut</label>
-          <input type="text" id="bank" />
+          <label for="endeDatum">Ende (Datum)</label>
+          <input type="date" id="endeDatum" />
+        </div>
+        <div class="form-group">
+          <label for="endeZeit">Ende (Uhrzeit)</label>
+          <input type="time" id="endeZeit" />
         </div>
       </div>
     </div>
 
-    <div class="button-row">
-      <button type="submit">Absenden</button>
+    <!-- Verpflegungskosten -->
+    <div class="section">
+      <div class="section-title">2. Verpflegungskosten (Tageserfassung)</div>
+      <table id="verpflegung-table">
+        <thead>
+          <tr>
+            <th>Datum</th>
+            <th>Abwesenheit (h)</th>
+            <th>Frühstück</th>
+            <th>Mittag</th>
+            <th>Abend</th>
+            <th>Pauschale (€)</th>
+          </tr>
+        </thead>
+        <tbody id="verpflegung-body">
+          <tr>
+            <td><input type="date" onchange="berechnePauschale(this)" /></td>
+            <td><input type="number" min="0" max="24" value="8" onchange="berechnePauschale(this)" /></td>
+            <td><input type="checkbox" onchange="berechnePauschale(this)" /></td>
+            <td><input type="checkbox" onchange="berechnePauschale(this)" /></td>
+            <td><input type="checkbox" onchange="berechnePauschale(this)" /></td>
+            <td><span class="pauschale">0.00</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:10px; text-align:right;">
+        <button onclick="zeileHinzufuegen()">+ Tag hinzufügen</button>
+      </div>
+      <div class="total">Gesamt Verpflegung: <span id="gesamtVerpflegung">0.00</span> €</div>
+    </div>
+
+    <div class="section">
+      <div style="text-align:right">
+        <button type="submit">Absenden</button>
+      </div>
     </div>
   </form>
 
   <script>
-    function addRow() {
-      const tbody = document.getElementById("expenses-body");
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td><input type="date" /></td>
-        <td>
-          <select>
-            <option>Taxi</option>
-            <option>Hotel</option>
-            <option>Bahn</option>
-            <option>Flug</option>
-            <option>Parkgebühr</option>
-            <option>Sonstiges</option>
-          </select>
-        </td>
-        <td><input type="number" step="0.01" class="amount" oninput="calculateTotal()" /></td>
-        <td><input type="text" /></td>
-        <td><button onclick="removeRow(this)">✕</button></td>
-      `;
-      tbody.appendChild(row);
+    function berechnePauschale(element) {
+      const row = element.closest("tr");
+      const stunden = parseFloat(row.cells[1].querySelector("input").value);
+      let grundPauschale = 0;
+
+      if (stunden >= 24) grundPauschale = 28;
+      else if (stunden >= 8) grundPauschale = 14;
+
+      let abzug = 0;
+      if (row.cells[2].querySelector("input").checked) abzug += 5.60;
+      if (row.cells[3].querySelector("input").checked) abzug += 11.20;
+      if (row.cells[4].querySelector("input").checked) abzug += 11.20;
+
+      const gesamt = Math.max(0, grundPauschale - abzug).toFixed(2);
+      row.querySelector(".pauschale").textContent = gesamt;
+
+      gesamtBerechnen();
     }
 
-    function removeRow(button) {
-      const row = button.parentNode.parentNode;
-      row.remove();
-      calculateTotal();
-    }
-
-    function calculateTotal() {
-      const amounts = document.querySelectorAll(".amount");
-      let sum = 0;
-      amounts.forEach(input => {
-        const value = parseFloat(input.value);
-        if (!isNaN(value)) sum += value;
+    function gesamtBerechnen() {
+      const zeilen = document.querySelectorAll(".pauschale");
+      let summe = 0;
+      zeilen.forEach(span => {
+        summe += parseFloat(span.textContent);
       });
-      document.getElementById("total").textContent = sum.toFixed(2);
+      document.getElementById("gesamtVerpflegung").textContent = summe.toFixed(2);
+    }
+
+    function zeileHinzufuegen() {
+      const body = document.getElementById("verpflegung-body");
+      const neueZeile = document.createElement("tr");
+      neueZeile.innerHTML = `
+        <td><input type="date" onchange="berechnePauschale(this)" /></td>
+        <td><input type="number" min="0" max="24" value="8" onchange="berechnePauschale(this)" /></td>
+        <td><input type="checkbox" onchange="berechnePauschale(this)" /></td>
+        <td><input type="checkbox" onchange="berechnePauschale(this)" /></td>
+        <td><input type="checkbox" onchange="berechnePauschale(this)" /></td>
+        <td><span class="pauschale">0.00</span></td>
+      `;
+      body.appendChild(neueZeile);
     }
   </script>
 </body>
