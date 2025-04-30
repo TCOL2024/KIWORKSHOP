@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Rechnungsformular mit PDF-Export</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    .pflicht {
+      background-color: #ffffcc; /* Gelb für Pflichtfelder */
+    }
+    .ust {
+      background-color: #ccffcc; /* Grün für USt-relevante Felder */
+    }
+    .pos-block {
+      border: 1px solid #aaa;
+      padding: 10px;
+      margin-top: 15px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rechnungsformular</h1>
+
+  <form id="rechnungsformular">
+    <label for="dozent" class="pflicht">Name Dozent (ggf. Firma):</label>
+    <input type="text" id="dozent" class="pflicht" required>
+
+    <label for="leistungsempfaenger" class="pflicht">Leistungsempfänger (Adresse):</label>
+    <textarea id="leistungsempfaenger" class="pflicht" required></textarea>
+
+    <label for="rechnungsnummer" class="pflicht">Rechnungs-Nr.:</label>
+    <input type="text" id="rechnungsnummer" class="pflicht" required>
+
+    <label for="datum" class="pflicht">Rechnungsdatum:</label>
+    <input type="date" id="datum" class="pflicht" required>
+
+    <!-- Positionen -->
+    <div class="pos-block">
+      <h3>Position 1</h3>
+      <label for="bezeichnung1">Bezeichnung:</label>
+      <input type="text" id="bezeichnung1">
+
+      <label for="datum1">Datum:</label>
+      <input type="date" id="datum1">
+
+      <label for="menge1">Menge:</label>
+      <input type="number" step="0.01" id="menge1">
+
+      <label for="einheit1">Einheit:</label>
+      <input type="text" id="einheit1">
+
+      <label for="preis1">Einzelpreis (€):</label>
+      <input type="number" step="0.01" id="preis1">
+
+      <label for="steuerart1" class="ust">Steuerart:</label>
+      <select id="steuerart1" class="ust">
+        <option value="USt 19%">USt 19%</option>
+        <option value="USt 7%">USt 7%</option>
+        <option value="Keine">Keine</option>
+      </select>
+    </div>
+
+    <div class="pos-block">
+      <h3>Position 2</h3>
+      <label for="bezeichnung2">Bezeichnung:</label>
+      <input type="text" id="bezeichnung2">
+
+      <label for="datum2">Datum:</label>
+      <input type="date" id="datum2">
+
+      <label for="menge2">Menge:</label>
+      <input type="number" step="0.01" id="menge2">
+
+      <label for="einheit2">Einheit:</label>
+      <input type="text" id="einheit2">
+
+      <label for="preis2">Einzelpreis (€):</label>
+      <input type="number" step="0.01" id="preis2">
+
+      <label for="steuerart2" class="ust">Steuerart:</label>
+      <select id="steuerart2" class="ust">
+        <option value="USt 19%">USt 19%</option>
+        <option value="USt 7%">USt 7%</option>
+        <option value="Keine">Keine</option>
+      </select>
+    </div>
+
+    <label for="gesamtbetrag">Gesamtbetrag (€):</label>
+    <input type="number" step="0.01" id="gesamtbetrag">
+
+    <button type="button" onclick="generatePDF()">PDF erstellen</button>
+  </form>
+
+  <script>
+    function generatePDF() {
+      const element = document.getElementById("rechnungsformular");
+      html2pdf().set({
+        margin: 1,
+        filename: 'Rechnung.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }
+      }).from(element).save();
+    }
+  </script>
+
+</body>
+</html>
