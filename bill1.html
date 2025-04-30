@@ -2,13 +2,35 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Rechnung erstellen und als PDF drucken</title>
+  <title>Rechnungsformular mit PDF</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
   <style>
-    body { font-family: Arial; padding: 20px; }
-    label, input, textarea { display: block; margin-top: 10px; width: 100%; }
-    #rechnungsLayout { display: none; border: 1px solid #ccc; padding: 20px; margin-top: 20px; }
-    .bold { font-weight: bold; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    label, input, select, textarea {
+      display: block;
+      margin-top: 10px;
+      width: 100%;
+    }
+    #rechnungsLayout {
+      display: none;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .button {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    hr {
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
@@ -16,41 +38,55 @@
 <h2>Rechnungsdaten eingeben</h2>
 
 <form id="eingabeForm">
-  <label>Dozent/Firma:</label>
-  <input type="text" id="dozent">
+  <label for="dozent">Dozent/Firma:</label>
+  <input type="text" id="dozent" required>
 
-  <label>Leistungsempfänger:</label>
-  <textarea id="empfaenger"></textarea>
+  <label for="empfaenger">Leistungsempfänger (Adresse in Oldenburg):</label>
+  <select id="empfaenger" required>
+    <option value="">-- Bitte wählen --</option>
+    <option value="EWE AG, Tirpitzstraße 39, 26122 Oldenburg">EWE AG, Tirpitzstraße 39, 26122 Oldenburg</option>
+    <option value="CEWE Stiftung & Co. KGaA, Meerweg 30-32, 26133 Oldenburg">CEWE Stiftung & Co. KGaA, Meerweg 30-32, 26133 Oldenburg</option>
+    <option value="Carl von Ossietzky Universität, Ammerländer Heerstraße 114-118, 26129 Oldenburg">Carl von Ossietzky Universität, Ammerländer Heerstraße 114-118, 26129 Oldenburg</option>
+    <option value="Polizeidirektion Oldenburg, Theodor-Tantzen-Platz 8, 26122 Oldenburg">Polizeidirektion Oldenburg, Theodor-Tantzen-Platz 8, 26122 Oldenburg</option>
+    <option value="Oldenburgische Landesbank AG, Stau 15-17, 26122 Oldenburg">Oldenburgische Landesbank AG, Stau 15-17, 26122 Oldenburg</option>
+    <option value="Pius-Hospital Oldenburg, Georgstraße 12, 26121 Oldenburg">Pius-Hospital Oldenburg, Georgstraße 12, 26121 Oldenburg</option>
+    <option value="BTC AG, Escherweg 5, 26121 Oldenburg">BTC AG, Escherweg 5, 26121 Oldenburg</option>
+    <option value="Nanu-Nana, Donnerschweer Straße 36, 26123 Oldenburg">Nanu-Nana, Donnerschweer Straße 36, 26123 Oldenburg</option>
+    <option value="Floragard GmbH, Georgstraße 4, 26121 Oldenburg">Floragard GmbH, Georgstraße 4, 26121 Oldenburg</option>
+    <option value="Ludwig Freytag GmbH & Co. KG, Cloppenburger Straße 92, 26135 Oldenburg">Ludwig Freytag GmbH & Co. KG, Cloppenburger Straße 92, 26135 Oldenburg</option>
+  </select>
 
-  <label>Rechnungsnummer:</label>
-  <input type="text" id="nummer">
+  <label for="nummer">Rechnungsnummer:</label>
+  <input type="text" id="nummer" required>
 
-  <label>Datum:</label>
-  <input type="date" id="datum">
+  <label for="datum">Datum:</label>
+  <input type="date" id="datum" required>
 
-  <label>Leistung 1:</label>
-  <input type="text" id="leistung1">
+  <label for="leistung1">Leistung (Beschreibung):</label>
+  <input type="text" id="leistung1" required>
 
-  <label>Gesamtbetrag (€):</label>
-  <input type="number" id="betrag">
+  <label for="betrag">Gesamtbetrag (€):</label>
+  <input type="number" step="0.01" id="betrag" required>
 
-  <button type="button" onclick="zeigeRechnung()">Rechnung anzeigen & PDF erstellen</button>
+  <button type="button" class="button" onclick="zeigeRechnung()">Rechnung anzeigen & PDF erstellen</button>
 </form>
 
+<!-- Layout für PDF-Erzeugung -->
 <div id="rechnungsLayout">
   <h2>Rechnung</h2>
-  <p><span class="bold">Dozent:</span> <span id="out_dozent"></span></p>
-  <p><span class="bold">Empfänger:</span><br><span id="out_empfaenger"></span></p>
+  <p><span class="bold">Dozent/Firma:</span> <span id="out_dozent"></span></p>
+  <p><span class="bold">Leistungsempfänger:</span><br><span id="out_empfaenger"></span></p>
   <p><span class="bold">Rechnungs-Nr.:</span> <span id="out_nummer"></span></p>
   <p><span class="bold">Datum:</span> <span id="out_datum"></span></p>
   <hr>
   <p><span class="bold">Leistung:</span> <span id="out_leistung1"></span></p>
   <p><span class="bold">Gesamtbetrag:</span> <span id="out_betrag"></span> €</p>
+  <p>Zahlbar sofort und ohne Abzug.</p>
 </div>
 
 <script>
   function zeigeRechnung() {
-    // Daten übernehmen
+    // Eingaben in Rechnung übertragen
     document.getElementById("out_dozent").innerText = document.getElementById("dozent").value;
     document.getElementById("out_empfaenger").innerText = document.getElementById("empfaenger").value;
     document.getElementById("out_nummer").innerText = document.getElementById("nummer").value;
@@ -58,7 +94,7 @@
     document.getElementById("out_leistung1").innerText = document.getElementById("leistung1").value;
     document.getElementById("out_betrag").innerText = document.getElementById("betrag").value;
 
-    // Layout einblenden
+    // Layout sichtbar machen
     document.getElementById("rechnungsLayout").style.display = "block";
 
     // PDF erzeugen
